@@ -27,10 +27,10 @@ done
 while [ ! $DBPASS ]
 do
 	echo -n "DB Pass --> "
-	read DBPASS
+	read -s DBPASS
 done
 
-echo -n "DB Host (localhost) --> "
+echo -ne "\nDB Host (localhost) --> "
 read DBHOST
 
 if [ -z $DBHOST ] ; then
