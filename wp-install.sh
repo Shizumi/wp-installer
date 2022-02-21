@@ -30,6 +30,13 @@ do
 	read DBPASS
 done
 
+echo -n "DB Host (localhost) --> "
+read DBHOST
+
+if [ -z $DBHOST ] ; then
+	DBHOST=localhost
+fi
+
 echo -n "DB Prefix (wp_) --> "
 read DBPREFIX
 
@@ -71,5 +78,5 @@ fi
 
 
 wp core download --locale=$LOCALE
-wp config create --dbname=$DBNAME --dbuser=$DBUSER --dbpass="$DBPASS" --dbprefix=$DBPREFIX --locale=$LOCALE
+wp config create --dbname=$DBNAME --dbuser=$DBUSER --dbpass="$DBPASS" --dbprefix=$DBPREFIX --dbhost=$DBHOST --locale=$LOCALE
 wp core install --url="$SITEURL" --title="$SITETITLE" --admin_user=$ADMINUSER --admin_email=$ADMINEMAIL $SKIP
